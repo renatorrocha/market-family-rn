@@ -1,10 +1,13 @@
-import { Text } from "@ui-kitten/components";
-import { View } from "react-native";
+import { Layout, Text } from "@ui-kitten/components";
 
-export default function shops() {
+export default function ShopsScreen() {
   return (
-    <View>
+    <Layout
+      style={{
+        flex: 1,
+      }}
+    >
       <Text>shops Page</Text>
-    </View>
+    </Layout>
   );
 }

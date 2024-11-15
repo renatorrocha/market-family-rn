@@ -1,10 +1,13 @@
-import { Text } from "@ui-kitten/components";
-import { View } from "react-native";
+import { Layout, Text } from "@ui-kitten/components";
 
 export default function ProfileScreen() {
   return (
-    <View>
+    <Layout
+      style={{
+        flex: 1,
+      }}
+    >
       <Text>profile page</Text>
-    </View>
+    </Layout>
   );
 }

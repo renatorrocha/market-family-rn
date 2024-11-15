@@ -1,13 +1,13 @@
 import { Layout, Text } from "@ui-kitten/components";
 
-export default function FamilyMembersScreen() {
+export default function JoinExistingFamilyScreen() {
   return (
     <Layout
       style={{
         flex: 1,
       }}
     >
-      <Text>family-members</Text>
+      <Text>Join existing Family</Text>
     </Layout>
   );
 }
