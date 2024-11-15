@@ -1,20 +1,79 @@
 import { Button, Card, Input, Layout, Text } from "@ui-kitten/components";
+import { router } from "expo-router";
+import { Controller, useForm } from "react-hook-form";
 import { StyleSheet } from "react-native";
 
 export default function NewFamilyScreen() {
-  async function handleSubmit() {
-    console.log("foi");
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      familyName: "",
+      username: "",
+    },
+  });
+
+  async function onSubmit(data: { familyName: string; username: string }) {
+    console.log(data);
+
+    router.push("/(tabs)/shops");
   }
+
   return (
     <Layout style={styles.layout}>
       <Card style={styles.card}>
         <Text category="h4" style={styles.title}>
           Criar nova Familia
         </Text>
-        <Input style={styles.input} placeholder="Nome da Familia" />
-        <Input style={styles.input} placeholder="Seu Nome" />
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              style={styles.input}
+              label="Nome da Familia"
+              placeholder="Familia Feliz"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+          name="familyName"
+        />
+        {errors.familyName && (
+          <Text style={styles.errorText} status="danger">
+            Nome da Familia não pode ser vazio.
+          </Text>
+        )}
 
-        <Button style={styles.button} onPress={handleSubmit}>
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              style={styles.input}
+              label="Seu nome de Usuário"
+              placeholder="John Doe"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+          name="username"
+        />
+        {errors.username && (
+          <Text style={styles.errorText} status="danger">
+            Nome do Usuário não pode ser vazio.
+          </Text>
+        )}
+
+        <Button style={styles.button} onPress={handleSubmit(onSubmit)}>
           Criar Familia
         </Button>
       </Card>
@@ -35,10 +94,13 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: "center",
-    marginBottom: 16,
   },
   input: {
-    marginBottom: 12,
+    marginTop: 12,
+    marginBottom: 2,
+  },
+  errorText: {
+    marginStart: 8,
   },
   button: {
     marginTop: 24,
