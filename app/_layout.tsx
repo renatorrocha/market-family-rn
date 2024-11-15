@@ -4,7 +4,7 @@ import { Stack } from "expo-router";
 export default function RootLayout() {
   return (
     <KittenProvider>
-      <Stack />
+      <Stack screenOptions={{ headerShown: false }} />
     </KittenProvider>
   );
 }

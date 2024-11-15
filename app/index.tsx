@@ -1,4 +1,5 @@
 import { Card, Text } from "@ui-kitten/components";
+import { Link } from "expo-router";
 import { View } from "react-native";
 
 export default function Index() {
@@ -18,6 +19,8 @@ export default function Index() {
           the Asian continent
         </Text>
       </Card>
+
+      <Link href={"/(tabs)/profile"}>teste</Link>
     </View>
   );
 }
